@@ -1,6 +1,7 @@
 package thenewgame;
 
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -31,6 +32,7 @@ public class TheNewGame extends JFrame implements ActionListener{
         Container contentPane = getContentPane();
         contentPane.add(new GamePane(WIDTH, HEIGHT));
         this.pack();
+        this.setBackground(Color.black);
         
         this.setVisible(true);
         
