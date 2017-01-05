@@ -15,9 +15,14 @@ public class Player {
     boolean hide = false;
     //ジャンプしたかどうか
     boolean jump = false;
-    //ジャンプを受け付ける最大フレーム数
-    int jumpCount = 15;
+    //前のジャンプボタンの状態
+    boolean oldJump = false;
+    //x回ジャンプカウント
+    int jumpCount = 2;
     int jumpCountBuff = jumpCount;
+    //ジャンプを受け付ける最大フレーム数
+    int jumpValue = 15;
+    int jumpValueBuff = jumpValue;
     
     //押されたキーの状態
     boolean W = false, 
@@ -49,14 +54,18 @@ public class Player {
         //ジャンプ
         boolean W_buff = W;//判定中のキー変更を受け付けないため
         if(W_buff){
-            if(jumpCountBuff > 0){
-                System.out.println(jumpCountBuff);
-                vy = -15;
-                jumpCountBuff--;
+            if(jumpValueBuff > 0 && jumpCountBuff > 0){
+                vy = -10;
+                jumpValueBuff--;
             }
         }else{
-            
+            jumpValueBuff = jumpValue;
+            if(oldJump != W_buff){
+                jumpCountBuff--;
+            }
         }
+        oldJump = W_buff;
+        
         //if(地面についてるか判定){}
         if(y == (HEIGHT - 100)){
             jumpCountBuff = jumpCount;
