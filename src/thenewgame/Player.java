@@ -6,6 +6,7 @@ import java.awt.geom.Ellipse2D;
 
 
 public class Player {
+    //うんこー！
     
     //Playerの座標
     double x, y;
